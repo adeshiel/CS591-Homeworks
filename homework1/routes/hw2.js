@@ -24,8 +24,9 @@ var longString = mongoose.model('Long', stringSchema);
 
 router.get('/', function(req, res, next) {
     //res.render('index', {title: "Homework 2", yum: "This is the directory for homework 2. Please type a string into the URI."})
-    longString.find({}, function(err, results) {
+    longString.find({}, '-_id -__v', function(err, results) {
         if (err) return console.error("Nuh-uh");
+        console.log(results)
         res.json(results)
     })        
 
